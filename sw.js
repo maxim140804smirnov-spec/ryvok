@@ -1,5 +1,5 @@
 // Сначала сеть (чтобы обновления приходили сразу), без сети — из кэша.
-const CACHE = 'ryvok-v1';
+const CACHE = 'ryvok-v2';
 const ASSETS = ['./', 'index.html', 'styles.css', 'app.js', 'plan.js', 'manifest.webmanifest', 'icons/icon.svg', 'icons/icon-192.png', 'icons/icon-512.png'];
 
 self.addEventListener('install', e => {

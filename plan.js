@@ -52,58 +52,59 @@ export const PLAN = {
     },
   },
 
+  // icon — имя иконки из app.js
   minimumDay: [
-    { id: 'nov', text: 'Novella: хотя бы одно рабочее действие' },
-    { id: 'pi', text: 'Prove It: видео выложены на все аккаунты' },
-    { id: 'not', text: 'Нотариат: 15 минут' },
-    { id: 'body', text: 'Тело: тренировка или 50 отжиманий + 50 приседаний' },
-    { id: 'report', text: 'Вечерний отчёт отправлен коучу (отмечается сам)' },
+    { id: 'nov', short: 'Novella', sub: 'хотя бы одно рабочее действие', icon: 'bag', text: 'Novella: хотя бы одно рабочее действие' },
+    { id: 'pi', short: 'Prove It', sub: 'видео на все аккаунты', icon: 'video', text: 'Prove It: видео выложены на все аккаунты' },
+    { id: 'not', short: 'Нотариат', sub: '15 минут', icon: 'book', text: 'Нотариат: 15 минут' },
+    { id: 'body', short: 'Тело', sub: 'тренировка или 50 + 50', icon: 'dumbbell', text: 'Тело: тренировка или 50 отжиманий + 50 приседаний' },
+    { id: 'report', short: 'Отчёт коучу', sub: 'отмечается сам при отправке', icon: 'send', text: 'Вечерний отчёт отправлен коучу' },
   ],
 
   notes: [
-    { id: 'plan', when: 'morning', label: 'Что сегодня главное и почему' },
-    { id: 'day', when: 'evening', label: 'Как прошёл день — расскажи как есть' },
-    { id: 'slip', when: 'evening', label: 'Где отвлёкся или сорвался и что было перед этим' },
-    { id: 'win', when: 'evening', label: 'Чем сегодня можно гордиться' },
-    { id: 'tomorrow', when: 'evening', label: 'Главное на завтра' },
-    { id: 'thoughts', when: 'evening', label: 'Мысли, тревоги, ситуации с людьми (дневник)' },
+    { id: 'plan', when: 'morning', label: 'Что сегодня главное и почему', hint: 'Одна главная вещь, без которой день не засчитан…' },
+    { id: 'day', when: 'evening', label: 'Как прошёл день', hint: 'Что сделал, что нет, как себя чувствовал — как есть' },
+    { id: 'slip', when: 'evening', label: 'Где отвлёкся или сорвался', hint: 'Что было прямо перед этим: время, место, мысль' },
+    { id: 'win', when: 'evening', label: 'Чем сегодня можно гордиться', hint: 'Даже мелочь' },
+    { id: 'tomorrow', when: 'evening', label: 'Главное на завтра', hint: 'Одна задача для утреннего блока' },
+    { id: 'thoughts', when: 'evening', label: 'Мысли, тревоги, люди', hint: 'Дневник: ситуация → мысль → что почувствовал' },
   ],
 
-  // agg: как сводить за неделю — sum или avg
+  // type — для логики (num/text/select/check), input — как выглядит поле, agg — как сводить за неделю
   metrics: [
-    { group: 'Novella', items: [
-      { id: 'nov_listings', label: 'Новых объявлений', type: 'num', agg: 'sum' },
-      { id: 'nov_reels', label: 'Reels / постов', type: 'num', agg: 'sum' },
-      { id: 'nov_msgs', label: 'Сообщений от клиентов', type: 'num', agg: 'sum' },
-      { id: 'nov_sales', label: 'Продаж, шт', type: 'num', agg: 'sum' },
-      { id: 'nov_rev', label: 'Выручка, ₽', type: 'num', agg: 'sum' },
+    { group: 'Novella', icon: 'bag', color: '#f472b6', items: [
+      { id: 'nov_listings', label: 'Новых объявлений', type: 'num', input: 'stepper', agg: 'sum' },
+      { id: 'nov_reels', label: 'Reels / постов', type: 'num', input: 'stepper', agg: 'sum' },
+      { id: 'nov_msgs', label: 'Сообщений от клиентов', type: 'num', input: 'stepper', agg: 'sum' },
+      { id: 'nov_sales', label: 'Продаж', type: 'num', input: 'stepper', agg: 'sum' },
+      { id: 'nov_rev', label: 'Выручка', type: 'num', input: 'number', unit: '₽', agg: 'sum' },
     ] },
-    { group: 'Prove It', items: [
-      { id: 'pi_videos', label: 'Видео выложено', type: 'num', agg: 'sum' },
-      { id: 'pi_views', label: 'Просмотров за день', type: 'num', agg: 'sum' },
-      { id: 'pi_regs', label: 'Регистраций', type: 'num', agg: 'sum' },
-      { id: 'pi_ftd', label: 'Депозитов (FTD)', type: 'num', agg: 'sum' },
-      { id: 'pi_usd', label: 'Доход, $', type: 'num', agg: 'sum' },
+    { group: 'Prove It', icon: 'video', color: '#60a5fa', items: [
+      { id: 'pi_videos', label: 'Видео выложено', type: 'num', input: 'stepper', agg: 'sum' },
+      { id: 'pi_views', label: 'Просмотров за день', type: 'num', input: 'number', agg: 'sum' },
+      { id: 'pi_regs', label: 'Регистраций', type: 'num', input: 'stepper', agg: 'sum' },
+      { id: 'pi_ftd', label: 'Депозитов (FTD)', type: 'num', input: 'stepper', agg: 'sum' },
+      { id: 'pi_usd', label: 'Доход', type: 'num', input: 'number', unit: '$', agg: 'sum' },
     ] },
-    { group: 'Mi Sports', items: [
-      { id: 'ms_ship', label: 'Отправок', type: 'num', agg: 'sum' },
-      { id: 'ms_sales', label: 'Продаж', type: 'num', agg: 'sum' },
+    { group: 'Mi Sports', icon: 'box', color: '#34d399', items: [
+      { id: 'ms_ship', label: 'Отправок', type: 'num', input: 'stepper', agg: 'sum' },
+      { id: 'ms_sales', label: 'Продаж', type: 'num', input: 'stepper', agg: 'sum' },
     ] },
-    { group: 'Знания', items: [
-      { id: 'not_topic', label: 'Нотариат: что разобрал', type: 'text' },
-      { id: 'eru', label: 'Эрудиция: что слушал', type: 'text' },
+    { group: 'Знания', icon: 'book', color: '#fbbf24', items: [
+      { id: 'not_topic', label: 'Нотариат: что разобрал', type: 'text', input: 'text' },
+      { id: 'eru', label: 'Эрудиция: что слушал', type: 'text', input: 'text' },
     ] },
-    { group: 'Тело', items: [
-      { id: 'sleep', label: 'Сон, часов', type: 'num', agg: 'avg' },
-      { id: 'train', label: 'Тренировка', type: 'select', options: ['—', 'Зал', 'Бокс', 'Зал + бокс', 'Другое'] },
-      { id: 'supps', label: 'Добавки приняты', type: 'check' },
+    { group: 'Тело', icon: 'dumbbell', color: '#f87171', items: [
+      { id: 'sleep', label: 'Сон, часов', type: 'num', input: 'stepper', step: 0.5, agg: 'avg' },
+      { id: 'train', label: 'Тренировка', type: 'select', input: 'chips', options: ['—', 'Зал', 'Бокс', 'Зал + бокс', 'Другое'] },
+      { id: 'supps', label: 'Добавки приняты', type: 'check', input: 'switch' },
     ] },
-    { group: 'Голова', items: [
-      { id: 'energy', label: 'Энергия, 1–10', type: 'num', agg: 'avg' },
-      { id: 'mood', label: 'Настроение, 1–10', type: 'num', agg: 'avg' },
-      { id: 'anx', label: 'Тревога, 1–10', type: 'num', agg: 'avg' },
-      { id: 'social', label: 'Соцсети + YouTube, мин (смотри экранное время)', type: 'num', agg: 'sum' },
-      { id: 'silence', label: 'Время в тишине, мин', type: 'num', agg: 'sum' },
+    { group: 'Голова', icon: 'smile', color: '#a78bfa', items: [
+      { id: 'energy', label: 'Энергия', type: 'num', input: 'scale', agg: 'avg' },
+      { id: 'mood', label: 'Настроение', type: 'num', input: 'scale', agg: 'avg' },
+      { id: 'anx', label: 'Тревога', type: 'num', input: 'scale', invert: true, agg: 'avg' },
+      { id: 'social', label: 'Соцсети + YouTube (экранное время)', type: 'num', input: 'number', unit: 'мин', agg: 'sum' },
+      { id: 'silence', label: 'Время в тишине', type: 'num', input: 'number', unit: 'мин', agg: 'sum' },
     ] },
   ],
 
