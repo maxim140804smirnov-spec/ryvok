@@ -1,0 +1,30 @@
+name: Telegram-напоминания
+
+on:
+  schedule:
+    # Время UTC. Москва = UTC+3. Если меняешь — поменяй и BY_CRON в bot/notify.mjs
+    - cron: '30 4 * * *'     # 07:30 МСК — утро
+    - cron: '0 10 * * 1-6'   # 13:00 МСК — середина дня (пн–сб)
+    - cron: '30 18 * * *'    # 21:30 МСК — вечерний отчёт
+    - cron: '0 16 * * 0'     # 19:00 МСК вс — недельный разбор
+  workflow_dispatch:
+    inputs:
+      kind:
+        description: 'Что отправить: test, chatid, morning, midday, evening, weekly'
+        default: 'test'
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node bot/notify.mjs
+        env:
+          TG_TOKEN: ${{ secrets.TG_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+          APP_URL: ${{ vars.APP_URL }}
+          KIND: ${{ inputs.kind }}
+          SCHEDULE: ${{ github.event.schedule }}
