@@ -87,9 +87,17 @@ function migrate(s) {
   s.ui ||= {};
   s.ui.dir ||= 'novella';
   s.ui.dur ||= 50;
-  s.ui.open ||= { Novella: true, 'Prove It': true, income: true };
+  s.ui.open ||= { NAVELA: true, 'PROVEit': true, income: true };
   s.weeks ||= {};
   s.income ||= {};
+  if (!s.meta.names2) {
+    // Старые названия брендов в уже сохранённых целях и раскрытых блоках
+    const rename = t => t.replace(/Novella/g, 'NAVELA').replace(/Prove It/g, 'PROVEit').replace(/Mi Sports/g, 'MEsports');
+    for (const c of Object.values(s.cycleGoals || {})) for (const list of Object.values(c)) for (const g of list) g.text = rename(g.text);
+    for (const w of Object.values(s.weeks)) for (const g of w.goals || []) g.text = rename(g.text);
+    for (const k of Object.keys(s.ui.open)) { const nk = rename(k); if (nk !== k) { s.ui.open[nk] = s.ui.open[k]; delete s.ui.open[k]; } }
+    s.meta.names2 = true;
+  }
   return s;
 }
 
@@ -102,6 +110,7 @@ function load() {
 }
 
 let S = load();
+save();
 let tab = 'today';
 let lastTab = null;
 let reportDate = today();
@@ -520,7 +529,7 @@ function viewWeek() {
   <section class="card">
     <div class="card-head"><span class="eyebrow">Цели недели</span><span class="meta">${w.goals.filter(g => g.done).length}/${w.goals.length}</span></div>
     ${w.goals.map(g => checkRow({ attrs: `data-wk="${mon}" data-goal="${g.id}"`, checked: g.done, text: g.text, del: `data-act="delgoal" data-id="${g.id}"`, key: g.id })).join('')
-      || '<p class="hint" style="margin-top:0">3–5 проверяемых целей: «выложить 30 видео», а не «заняться Prove It».</p>'}
+      || '<p class="hint" style="margin-top:0">3–5 проверяемых целей: «выложить 30 видео», а не «заняться PROVEit».</p>'}
     <div class="add-row"><div class="voice one grow"><input type="text" id="newGoal" placeholder="Новая цель недели">${micBtn('newGoal', 'sm')}</div>
       <button class="btn icon primary" data-act="addgoal" aria-label="Добавить цель">${icon('plus')}</button></div>
   </section>

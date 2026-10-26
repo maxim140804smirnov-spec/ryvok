@@ -17,9 +17,9 @@ export const PLAN = {
 
   // weeklyHours — недельный бюджет фокус-часов
   directions: [
-    { id: 'novella', name: 'Novella', color: '#f472b6', weeklyHours: 10 },
-    { id: 'proveit', name: 'Prove It', color: '#60a5fa', weeklyHours: 7 },
-    { id: 'misports', name: 'Mi Sports', color: '#34d399', weeklyHours: 3 },
+    { id: 'novella', name: 'NAVELA', color: '#f472b6', weeklyHours: 10 },
+    { id: 'proveit', name: 'PROVEit', color: '#60a5fa', weeklyHours: 7 },
+    { id: 'misports', name: 'MEsports', color: '#34d399', weeklyHours: 3 },
     { id: 'notary', name: 'Нотариат', color: '#fbbf24', weeklyHours: 3 },
     { id: 'uni', name: 'Институт', color: '#a78bfa', weeklyHours: 0 },
     { id: 'health', name: 'Здоровье', color: '#f87171', weeklyHours: 0 },
@@ -28,9 +28,9 @@ export const PLAN = {
   timerDirections: ['novella', 'proveit', 'misports', 'notary', 'uni', 'other'],
 
   incomeSources: [
-    { id: 'misports', name: 'Mi Sports (твоя доля)' },
-    { id: 'novella', name: 'Novella' },
-    { id: 'proveit', name: 'Prove It' },
+    { id: 'misports', name: 'MEsports (твоя доля)' },
+    { id: 'novella', name: 'NAVELA' },
+    { id: 'proveit', name: 'PROVEit' },
     { id: 'notary', name: 'Нотариат' },
     { id: 'other', name: 'Другое' },
   ],
@@ -40,7 +40,7 @@ export const PLAN = {
   dayTypes: {
     lecture: {
       name: 'лекции', focusTarget: 180,
-      hint: 'Лекции — это твоё рабочее время. Ноутбук на паре: два фокус-блока по Novella или Prove It прямо там, третий — вечером.',
+      hint: 'Лекции — это твоё рабочее время. Ноутбук на паре: два фокус-блока по NAVELA или PROVEit прямо там, третий — вечером.',
     },
     seminar: {
       name: 'семинары', focusTarget: 120,
@@ -54,8 +54,8 @@ export const PLAN = {
 
   // icon — имя иконки из app.js
   minimumDay: [
-    { id: 'nov', short: 'Novella', sub: 'хотя бы одно рабочее действие', icon: 'bag', text: 'Novella: хотя бы одно рабочее действие' },
-    { id: 'pi', short: 'Prove It', sub: 'видео на все аккаунты', icon: 'video', text: 'Prove It: видео выложены на все аккаунты' },
+    { id: 'nov', short: 'NAVELA', sub: 'хотя бы одно рабочее действие', icon: 'bag', text: 'NAVELA: хотя бы одно рабочее действие' },
+    { id: 'pi', short: 'PROVEit', sub: 'видео на все аккаунты', icon: 'video', text: 'PROVEit: видео выложены на все аккаунты' },
     { id: 'not', short: 'Нотариат', sub: '15 минут', icon: 'book', text: 'Нотариат: 15 минут' },
     { id: 'body', short: 'Тело', sub: 'тренировка или 50 + 50', icon: 'dumbbell', text: 'Тело: тренировка или 50 отжиманий + 50 приседаний' },
     { id: 'report', short: 'Отчёт коучу', sub: 'отмечается сам при отправке', icon: 'send', text: 'Вечерний отчёт отправлен коучу' },
@@ -72,21 +72,21 @@ export const PLAN = {
 
   // type — для логики (num/text/select/check), input — как выглядит поле, agg — как сводить за неделю
   metrics: [
-    { group: 'Novella', icon: 'bag', color: '#f472b6', items: [
+    { group: 'NAVELA', icon: 'bag', color: '#f472b6', items: [
       { id: 'nov_listings', label: 'Новых объявлений', type: 'num', input: 'stepper', agg: 'sum' },
       { id: 'nov_reels', label: 'Reels / постов', type: 'num', input: 'stepper', agg: 'sum' },
       { id: 'nov_msgs', label: 'Сообщений от клиентов', type: 'num', input: 'stepper', agg: 'sum' },
       { id: 'nov_sales', label: 'Продаж', type: 'num', input: 'stepper', agg: 'sum' },
       { id: 'nov_rev', label: 'Выручка', type: 'num', input: 'number', unit: '₽', agg: 'sum' },
     ] },
-    { group: 'Prove It', icon: 'video', color: '#60a5fa', items: [
+    { group: 'PROVEit', icon: 'video', color: '#60a5fa', items: [
       { id: 'pi_videos', label: 'Видео выложено', type: 'num', input: 'stepper', agg: 'sum' },
       { id: 'pi_views', label: 'Просмотров за день', type: 'num', input: 'number', agg: 'sum' },
       { id: 'pi_regs', label: 'Регистраций', type: 'num', input: 'stepper', agg: 'sum' },
       { id: 'pi_ftd', label: 'Депозитов (FTD)', type: 'num', input: 'stepper', agg: 'sum' },
       { id: 'pi_usd', label: 'Доход', type: 'num', input: 'number', unit: '$', agg: 'sum' },
     ] },
-    { group: 'Mi Sports', icon: 'box', color: '#34d399', items: [
+    { group: 'MEsports', icon: 'box', color: '#34d399', items: [
       { id: 'ms_ship', label: 'Отправок', type: 'num', input: 'stepper', agg: 'sum' },
       { id: 'ms_sales', label: 'Продаж', type: 'num', input: 'stepper', agg: 'sum' },
     ] },
@@ -111,14 +111,14 @@ export const PLAN = {
   // Фокус по неделям. Цикл 2 и 3 расписываем на разборе в конце предыдущего цикла.
   milestones: [
     { from: '2026-10-25', to: '2026-10-25', text: 'Нулевой день: поставить приложение, убрать YouTube и TikTok с телефона, закрыть минимальный день.' },
-    { from: '2026-10-26', to: '2026-11-01', text: 'Запуск. Телефон без YouTube/TikTok. Записаться на анализы. Novella: Instagram, 10 шаблонов объявлений, список кадров. Prove It: постинг каждый день.' },
-    { from: '2026-11-02', to: '2026-11-08', text: 'Mi Sports: новые позиции отсняты и выставлены за 3 дня. Prove It: 1 видео в день на каждый аккаунт. Novella: всё готово к приезду товара.' },
-    { from: '2026-11-09', to: '2026-11-15', text: 'Novella: товар приехал — проверка качества, съёмка, все объявления за 7 дней. Подготовка к работе в конторе.' },
-    { from: '2026-11-16', to: '2026-11-22', text: 'Старт в нотариальной конторе, журнал практики. Novella: Reels каждый день.' },
-    { from: '2026-11-23', to: '2026-11-29', text: 'Novella: первые продажи и цифры по каждой модели. Prove It: какие видео дали больше всего просмотров.' },
-    { from: '2026-11-30', to: '2026-12-06', text: 'Novella: отобрать 3–5 моделей-победителей. Prove It: масштабировать 2 лучших формата.' },
-    { from: '2026-12-07', to: '2026-12-13', text: 'Novella: заказ основной партии (если качество подтвердилось). Нотариат: блок «Наследование».' },
-    { from: '2026-12-14', to: '2026-12-20', text: 'Чекпойнт Prove It 20.12: воронка просмотры → регистрации → депозиты. Решение, что масштабировать.' },
+    { from: '2026-10-26', to: '2026-11-01', text: 'Запуск. Телефон без YouTube/TikTok. Записаться на анализы. NAVELA: Instagram, 10 шаблонов объявлений, список кадров. PROVEit: постинг каждый день.' },
+    { from: '2026-11-02', to: '2026-11-08', text: 'MEsports: новые позиции отсняты и выставлены за 3 дня. PROVEit: 1 видео в день на каждый аккаунт. NAVELA: всё готово к приезду товара.' },
+    { from: '2026-11-09', to: '2026-11-15', text: 'NAVELA: товар приехал — проверка качества, съёмка, все объявления за 7 дней. Подготовка к работе в конторе.' },
+    { from: '2026-11-16', to: '2026-11-22', text: 'Старт в нотариальной конторе, журнал практики. NAVELA: Reels каждый день.' },
+    { from: '2026-11-23', to: '2026-11-29', text: 'NAVELA: первые продажи и цифры по каждой модели. PROVEit: какие видео дали больше всего просмотров.' },
+    { from: '2026-11-30', to: '2026-12-06', text: 'NAVELA: отобрать 3–5 моделей-победителей. PROVEit: масштабировать 2 лучших формата.' },
+    { from: '2026-12-07', to: '2026-12-13', text: 'NAVELA: заказ основной партии (если качество подтвердилось). Нотариат: блок «Наследование».' },
+    { from: '2026-12-14', to: '2026-12-20', text: 'Чекпойнт PROVEit 20.12: воронка просмотры → регистрации → депозиты. Решение, что масштабировать.' },
     { from: '2026-12-21', to: '2026-12-27', text: 'Предновогодние продажи. Подготовка к сессии заранее.' },
     { from: '2026-12-28', to: '2027-01-03', text: 'Праздники: минимальный день обязателен каждый день.' },
     { from: '2027-01-04', to: '2027-01-10', text: 'Сессия. Режим: экзамены + минимальный день.' },
@@ -132,7 +132,7 @@ export const PLAN = {
       novella: [
         'Все позиции тестовой партии на Авито не позже 7 дней после приезда',
         'Отобраны 3–5 моделей-победителей, заказана основная партия',
-        'Instagram Novella: 30+ Reels',
+        'Instagram NAVELA: 30+ Reels',
       ],
       proveit: [
         'Постинг каждый день на все аккаунты без пропусков',
